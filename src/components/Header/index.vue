@@ -10,11 +10,11 @@
         <router-link class="link2" to="hq.centanet.com/">橫琴</router-link>
       </div>
       <div class="l_right">
-        <router-link class="link1" to="">中原APP</router-link>
+        <div @mouseover="showQr" @mouseleave="l_Qr"><router-link class="link1" to="">中原APP</router-link></div>
         <div class="topbar_line"></div>
-        <router-link class="link2" to="" @click="showAp">關注我們</router-link>
+        <div @mouseover="showAp" @mouseleave="l_Ap"><router-link class="link2" to="" >關注我們</router-link></div>
         <!-- 插槽 -->
-        <slot :qr="qr" :ap="ap" ></slot>
+        <slot  :qr="qr" :ap="ap"></slot>
       </div>
     </div>
   </div>
@@ -22,21 +22,36 @@
 
 <script>
 export default {
+  // props: {
+  //   qr: Boolean,
+  //   ap: Boolean,
+  // },
   data() {
     return {
-      qr: false,
-      ap: false,
+      qr:false,
+      ap:false
     };
   },
   methods: {
     showAp() {
+      console.log('showAp');
       this.ap = true;
-      console.log('111')
-      this.$emit("listenToChildEvent","this message is from child");
+      // this.qr=false;
+      this.$emit('toParentap', this.qr, this.ap)
+    },
+    l_Qr(){
+        this.qr=false;
+        this.$emit('toParentqr',this.qr,this.ap)
     },
     showQr() {
       this.qr = true;
+      // this.ap=false;
+      this.$emit('toParentqr',this.qr,this.ap)
     },
+    l_Ap(){
+      this.ap=false;
+      this.$emit('toParentap', this.qr, this.ap)
+    }
   },
 };
 </script>
