@@ -36,6 +36,7 @@
           </form>
         </div>
       </div>
+      <!-- 轮播 -->
       <div class="lun_bo">
         <el-carousel indicator-position="outside">
           <el-carousel-item v-for="item in 4" :key="item">
@@ -43,6 +44,8 @@
           </el-carousel-item>
         </el-carousel>
       </div>
+      <!-- 大图标导航 -->
+      <div class=""></div>
     </div>
   </div>
 </template>
@@ -161,29 +164,43 @@ export default {};
       position: relative;
       z-index: 11;
     }
-    .lun_bo{
+    .lun_bo {
       position: absolute;
-      
+      top: auto;
       width: 100%;
+      height: 477px;
+     /deep/ .el-carousel__container {
+        position: relative;
+        display: flex;
+      justify-content: center;
+      align-items: center;
+        width: 100%;
+        height: 477px;
+      }
       // height: ;
       // border:1px solid blue;
+      .el-carousel__item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
       .el-carousel__item h3 {
-      color: #475669;
-      font-size: 18px;
-      opacity: 0.75;
-      line-height: 300px;
-      margin: 0;
-    }
+        color: #475669;
+        font-size: 18px;
+        opacity: 0.75;
+        line-height: 300px;
+        margin: 0;
+        // border: 1px solid pink;
+      }
 
-    .el-carousel__item:nth-child(2n) {
-      background-color: #99a9bf;
-    }
+      .el-carousel__item:nth-child(2n) {
+        background-color: #99a9bf;
+      }
 
-    .el-carousel__item:nth-child(2n + 1) {
-      background-color: #d3dce6;
+      .el-carousel__item:nth-child(2n + 1) {
+        background-color: #d3dce6;
+      }
     }
-    }
-    
   }
 }
 </style>
